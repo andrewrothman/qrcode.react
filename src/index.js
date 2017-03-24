@@ -34,7 +34,7 @@ var QRCode = React.createClass({
     level: React.PropTypes.oneOf(['L', 'M', 'Q', 'H']),
     bgColor: React.PropTypes.string,
     fgColor: React.PropTypes.string,
-    getPNGData: React.PropTypes.function
+    didGeneratePNGData: React.PropTypes.function
   },
 
   getDefaultProps: function() {
