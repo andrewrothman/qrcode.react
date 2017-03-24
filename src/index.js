@@ -34,6 +34,7 @@ var QRCode = React.createClass({
     level: React.PropTypes.oneOf(['L', 'M', 'Q', 'H']),
     bgColor: React.PropTypes.string,
     fgColor: React.PropTypes.string,
+    getPNGData: React.PropTypes.function
   },
 
   getDefaultProps: function() {
@@ -42,6 +43,7 @@ var QRCode = React.createClass({
       level: 'L',
       bgColor: '#FFFFFF',
       fgColor: '#000000',
+      didGeneratePNGData: null
     };
   },
 
@@ -83,6 +85,10 @@ var QRCode = React.createClass({
         ctx.fillRect(Math.round(cdx * tileW), Math.round(rdx * tileH), w, h);
       });
     });
+    
+    if (this.props.didGeneratePNGData != null) {
+      this.props.didGeneratePNGData.apply(this, canvas.toDataURL("image/png"));
+    }
   },
 
   render: function() {
